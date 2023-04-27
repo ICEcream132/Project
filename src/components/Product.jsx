@@ -73,9 +73,6 @@ const Product = ({item}) => {
   return (
     <Container>
         <Circle/>
-        <InfoContainer>
-        <Desc>{item.desc}</Desc>
-        </InfoContainer>
         <Img src={item.img} />
         <Info>
             <Icon>
@@ -87,6 +84,9 @@ const Product = ({item}) => {
             <Icon>
                 <FavoriteBorderOutlined/>
             </Icon>
+        <InfoContainer>
+        <Desc>{item.desc}</Desc>
+        </InfoContainer>
         </Info>
         
     </Container>
