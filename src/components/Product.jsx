@@ -19,7 +19,7 @@ cursor: pointer;
 
 const Container = styled.div`
 flex: 1;
-margin: 15px;
+margin: 5px;
 min-width: 280px;
 height: 350px;
 display: flex;
@@ -51,7 +51,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin: 10px;
-transition: all 0.5s ease;
+transition: all 0.8s ease;
 &:hover {
   background-color: #e9f5f5;
   transform: scale(1.1);
