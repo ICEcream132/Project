@@ -30,7 +30,7 @@ position: relative;
 &:hover ${Info}{opacity: 1;}`;
 
 const InfoContainer = styled.div`
-flex: 1;
+
 `;
 
 const Circle = styled.div`
