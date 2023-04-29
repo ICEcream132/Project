@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -58,14 +60,39 @@ const Link = styled.a`
 `;
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
+  const handleLogin = async (e) => {
+   let result = await fetch("localhost:3001/login", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+    }),
+  });
+   result = await result.json();
+   console.warn(result);
+   if(result.name)
+   {
+      localStorage.setItem('user', JSON.stringify(result));
+      Navigate("../");
+   }else{
+    alert("please enter correct email and password")
+   }
+  }
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
+          <Input placeholder="username" className="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+          <Input placeholder="password" className="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
+          <Button onClick={handleLogin}>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>

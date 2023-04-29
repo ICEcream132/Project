@@ -1,4 +1,5 @@
-// import React, {useState, useEffect} from 'react';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from "./pages/Product";
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
@@ -6,25 +7,27 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart"
 
-// function App(){
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/:id" element={<Product />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
 
-  // const [data, setData] = useState(null)
-
-// useEffect(() => {
-//   fetch('/api')
-//   .then(response => response.json())
-//   .then(response => setData(response.message))
-// }, [])
-
-const App = () => {
-  return <Home/>
-  // (
-  // <p>
-  //   {
-  //     !data ? "Loading..." : data
-  //   }
-  //   </p>
-  // )
-};
+// const App = () => {
+//   return (<>
+//       <RouterProvider router={router} />
+//   </>)
 // };
+
 export default App;
